@@ -1,5 +1,5 @@
 default_tags = {
-    "project" = "blender-lambda"
+    "project" = "blender-lambda-export"
 }
 
 producer_api_gateway_name = "blender-lambda-api"

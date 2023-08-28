@@ -4,7 +4,9 @@ ARG FUNCTION_DIR="/home/app"
 RUN mkdir -p $FUNCTION_DIR
 WORKDIR ${FUNCTION_DIR}
 
-RUN pip install boto3
+RUN apt-get update && apt-get install xvfb -y
+RUN pip install pyvirtualdisplay
+RUN pip install boto3 
 RUN pip install awslambdaric --target ${FUNCTION_DIR}
 
 ENTRYPOINT [ "/bin/3.1/python/bin/python3.10", "-m", "awslambdaric" ]

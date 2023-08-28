@@ -42,7 +42,9 @@ def handler(event, context):
         for support_file in support_files:
             check_s3_file_exists(support_file)
 
-        (frame_start, frame_end) = get_frame_range(render_request)
+        #(frame_start, frame_end) = get_frame_range(render_request)
+        frame_start = 1
+        frame_end = 1
 
         queue_render_jobs(file_name, frame_start, frame_end, support_files)
 

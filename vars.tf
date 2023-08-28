@@ -8,7 +8,7 @@ variable "aws_region" {
     description = "AWS region for all resources"
 
     type = string
-    default = "us-east-1"
+    default = "eu-north-1"
 }
 
 variable "producer_ecr_repo" {
@@ -27,7 +27,7 @@ variable "lambda_bucket" {
     description = "Bucket for all lambda archives"
 
     type = string
-    default = "temp-lambda-archive-bucket"
+    default = "osg-lambda-archive-bucket"
 }
 
 variable "default_tags" {

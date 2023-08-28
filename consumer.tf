@@ -3,6 +3,7 @@ module "consumer_docker_image" {
 
     create_ecr_repo = true
     ecr_repo = var.consumer_ecr_repo
+    image_tag       = "latest"
     source_path = abspath(var.consumer_lambda_source_path)
 }
 
@@ -11,9 +12,14 @@ resource "aws_lambda_function" "consumer_lambda" {
 
     package_type = "Image"
     image_uri = module.consumer_docker_image.image_uri
+    #image_uri = "022162415430.dkr.ecr.eu-north-1.amazonaws.com/blender-lambda-consumer:latest"
     role = aws_iam_role.lambda_exec.arn
     timeout = var.consumer_timeout_seconds
     memory_size = 3009
+
+    ephemeral_storage {
+        size = 10240
+    }
 
     environment {
         variables = {

@@ -1,0 +1,1 @@
+blender -b -E CYCLES -P blender-lambda-consumer/render_frame.py -- face-cube.blend  rendered-file.png 50

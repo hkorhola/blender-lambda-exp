@@ -3,6 +3,8 @@ import json
 import logging
 import os
 import sys
+from pyvirtualdisplay import Display
+
 
 # from https://gist.github.com/niranjv/fb95e716151642e8ca553b0e38dd152e
 logger = logging.getLogger()
@@ -20,6 +22,7 @@ LOCAL_RENDER_FILE = '/tmp/render_file.blend'
 
 def handler(event, context):
     try:
+        #Display().start()
         received_body = event['Records'][0]['body']
         record = json.loads(received_body)
 
@@ -46,7 +49,7 @@ def handler(event, context):
 def render_frame(frame, output_file):
     logger.info(f'Rendering frame: {frame}')
 
-    os.system(f"blender -b -P render_frame.py -- {LOCAL_RENDER_FILE} {output_file} {frame}")
+    os.system(f"blender -b -E CYCLES -P render_frame.py -- {LOCAL_RENDER_FILE} {output_file} {frame}")
 
     logger.info(f'Rendering frame: {frame} done')
 
