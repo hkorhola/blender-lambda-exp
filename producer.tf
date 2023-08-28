@@ -12,7 +12,6 @@ resource "aws_lambda_function" "producer_lambda" {
 
     package_type = "Image"
     image_uri = module.producer_docker_image.image_uri
-    #image_uri = "022162415430.dkr.ecr.eu-north-1.amazonaws.com/blender-lambda-producer:latest"
     role = aws_iam_role.lambda_exec.arn
     timeout = 120
 

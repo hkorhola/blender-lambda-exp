@@ -12,7 +12,6 @@ resource "aws_lambda_function" "consumer_lambda" {
 
     package_type = "Image"
     image_uri = module.consumer_docker_image.image_uri
-    #image_uri = "022162415430.dkr.ecr.eu-north-1.amazonaws.com/blender-lambda-consumer:latest"
     role = aws_iam_role.lambda_exec.arn
     timeout = var.consumer_timeout_seconds
     memory_size = 3009
